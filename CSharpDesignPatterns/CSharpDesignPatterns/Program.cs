@@ -50,6 +50,23 @@ namespace CSharpDesignPatterns
             Console.WriteLine(car);
             Console.WriteLine();
 
+            var sb = new SqlBuilder();
+
+            string sql = sb
+                .Select("*")
+                .From("User")
+                .Where("id", 1)
+                .Build();
+
+            string insertSql = sb
+                .Insert("User", "id", "name", "email")
+                .Values("1", "John", "mail@mail.com")
+                .Build();
+
+            Console.WriteLine(sql);
+            Console.WriteLine(insertSql);
+            Console.WriteLine();
+
             // functional builder
             var pb = new PersonBuilder();
             var john = pb
